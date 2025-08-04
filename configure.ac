@@ -9,15 +9,8 @@ dnl build-aux
 # clutter top dir:
 AC_CONFIG_AUX_DIR([build-aux])
 
-dnl m4
-# The modern autotools convention is that you should use an "m4"
-# subdirectory for internal "m4" files, instead of the default
-# aclocal.m4.
-#AC_CONFIG_MACRO_DIR([m4])
-
 dnl AM_INIT_AUTOMAKE
 AM_INIT_AUTOMAKE([1.10 -Wall foreign])
-
 
 dnl "about.c"
 # Safety check - list a source file that wouldn't be in other
@@ -54,6 +47,11 @@ AC_SUBST(FREETYPE2_LIBS)
 
 dnl ====== Adiciona suporte à macro personalizada ============================
 MY_ENABLE_DEBUG
+if test "x$enable_debug" = "xyes"; then
+	CFLAGS="-g -O0 -DDEBUG"
+else
+	CFLAGS="-O2"
+fi
 
 dnl ====== Compilador ========================================================
 AC_PROG_CC
