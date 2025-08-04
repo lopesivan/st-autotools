@@ -8,7 +8,7 @@ test -d $_d || mkdir $_d
 _d=build-aux
 test -d $_d || mkdir $_d
 
-aclocal -I m4
+aclocal -I m4 --install
 autoconf
 autoheader
 automake --add-missing
