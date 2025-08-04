@@ -13,7 +13,7 @@ dnl m4
 # The modern autotools convention is that you should use an "m4"
 # subdirectory for internal "m4" files, instead of the default
 # aclocal.m4.
-AC_CONFIG_MACRO_DIR([m4])
+#AC_CONFIG_MACRO_DIR([m4])
 
 dnl AM_INIT_AUTOMAKE
 AM_INIT_AUTOMAKE([1.10 -Wall foreign])
@@ -52,17 +52,8 @@ AC_SUBST(FREETYPE2_LIBS)
 #CFLAGS="$CFLAGS ${FREETYPE2_CFLAGS} ${FONTCONFIG_CFLAGS}"
 #LIBS="$LIBS ${FONTCONFIG_LIBS} ${FREETYPE2_LIBS}"
 
-dnl ====== Opções de debug ===================================================
-AC_ARG_ENABLE([debug],
-    AS_HELP_STRING([--enable-debug], [Habilitar modo debug]),
-    [debug=$enableval],
-    [debug=no])
-
-if test "x$debug" = "xyes"; then
-    CFLAGS="$CFLAGS -g -O0 -DDEBUG"
-else
-    CFLAGS="$CFLAGS -O2 -DNDEBUG"
-fi
+dnl ====== Adiciona suporte à macro personalizada ============================
+MY_ENABLE_DEBUG
 
 dnl ====== Compilador ========================================================
 AC_PROG_CC
