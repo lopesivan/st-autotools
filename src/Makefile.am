@@ -12,4 +12,4 @@ BUILT_SOURCES = xconfig.h
 xconfig.h: config.def.h
 	cp config.def.h xconfig.h
 
-CLEANFILES = config.h st
+CLEANFILES = xconfig.h st
