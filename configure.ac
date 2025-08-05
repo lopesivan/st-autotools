@@ -34,12 +34,12 @@ AC_DEFINE(AUTHOR, ["Ivan Lopes"], [Essa variável aparece no config.h])
 dnl ====== bibliotescas ======================================================
 PKG_PROG_PKG_CONFIG
 PKG_CHECK_MODULES(FONTCONFIG, [fontconfig])
-#PKG_CHECK_MODULES(FREETYPE2,  [freetype2])
+PKG_CHECK_MODULES(FREETYPE2,  [freetype2])
 
 AC_SUBST(FONTCONFIG_CFLAGS)
 AC_SUBST(FONTCONFIG_LIBS)
-#AC_SUBST(FREETYPE2_CFLAGS)
-#AC_SUBST(FREETYPE2_LIBS)
+AC_SUBST(FREETYPE2_CFLAGS)
+AC_SUBST(FREETYPE2_LIBS)
 
 # Configurações adicionais para wxWidgets
 #CFLAGS="$CFLAGS ${FREETYPE2_CFLAGS} ${FONTCONFIG_CFLAGS}"
@@ -48,9 +48,9 @@ AC_SUBST(FONTCONFIG_LIBS)
 dnl ====== Adiciona suporte à macro personalizada ============================
 MY_ENABLE_DEBUG
 if test "x$enable_debug" = "xyes"; then
-	CFLAGS="-g -O0 -DDEBUG"
+	CFLAGS="-g -DDEBUG"
 else
-	CFLAGS="-O2"
+	CFLAGS=""
 fi
 
 dnl ====== Compilador ========================================================
