@@ -1,11 +1,14 @@
 bin_PROGRAMS = st
 
 st_SOURCES   = st.c x.c
-st_CFLAGS    = -I$(top_srcdir) -I/usr/X11R6/include \
+
+# Use apenas as flags vindas do pkg-config
+st_CFLAGS    = -I$(top_srcdir) \
                ${FREETYPE2_CFLAGS} ${FONTCONFIG_CFLAGS} \
-               -DVERSION=\"$(PACKAGE_VERSION)\" -D_XOPEN_SOURCE=600 -O1
-st_LDADD     = -L/usr/X11R6/lib -lm -lrt -lX11 -lutil -lXft \
-               ${FONTCONFIG_LIBS} ${FREETYPE2_LIBS}
+               -DVERSION=\"$(PACKAGE_VERSION)\" -D_XOPEN_SOURCE=600 -O2
+
+# Use apenas as libs vindas do pkg-config e bibliotecas extras
+st_LDADD     = ${FREETYPE2_LIBS} ${FONTCONFIG_LIBS} -lX11 -lutil -lXft -lm -lrt
 
 # Regra para copiar config.def.h para xconfig.h antes da compilação
 BUILT_SOURCES = xconfig.h
